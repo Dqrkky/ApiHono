@@ -9,8 +9,12 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "ApiHono": "file:",
+    "crypto": "^1.0.1",
     "dotenv": "^16.5.0",
-    "hono": "^4.7.10"
+    "fs": "^0.0.1-security",
+    "hono": "^4.7.10",
+    "os": "^0.1.2",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "vercel": "^32.4.1"
