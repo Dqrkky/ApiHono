@@ -15,8 +15,8 @@ Alternate: [dns-hosts](https://dns-hosts.vercel.app)
 
 ### 5. [terrormafia](https://terrormafia.vercel.app)
 
-### 6. [dqrkky](https://dqrk.vercel.app)
-Alternate: [dqrkky](https://dqrkky.vercel.app)
+### 6. [dqrkky](https://dqrkky.vercel.app)
+Alternate: [dqrk](https://dqrk.vercel.app)
 
 ### 7. [talktok](https://talktok.vercel.app)
 
