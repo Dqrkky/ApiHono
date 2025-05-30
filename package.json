@@ -1,0 +1,16 @@
+{
+  "name": "ApiHono",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "ApiHono": "file:",
+    "hono": "^4.7.10"
+  },
+  "devDependencies": {
+    "vercel": "^32.4.1"
+  }
+}
