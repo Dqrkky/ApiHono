@@ -26,6 +26,7 @@ api.post('/webhooks/:webhookName', async (c) => {
   const body = await c.req.json()
   const data = {
     webhook: {
+      forwardUrl: forwardUrl,
       name: webhookName,
       data: body
     }
