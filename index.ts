@@ -18,6 +18,10 @@ api.get('/', (c) => {
 })
 
 api.post('/webhooks/:webhookName', async (c) => {
+  const forwardUrl = process.env.FORWARD_URL as string
+  if (!forwardUrl) {
+    return c.json({ status: 'error', message: 'Missing environment variable: FORWARD_URL' }, 500)
+  }
   const webhookName = c.req.param('webhookName')
   const body = await c.req.json()
   const data = {
@@ -26,10 +30,6 @@ api.post('/webhooks/:webhookName', async (c) => {
       data: body
     }
   }
-  const forwardUrl = process.env.FORWARD_URL as string
-  if (!forwardUrl) {
-    return c.json({ status: 'error', message: 'Missing environment variable: FORWARD_URL' }, 500)
-  }
   try {
     const response = await fetch(forwardUrl, {
       method: 'POST',
@@ -37,7 +37,7 @@ api.post('/webhooks/:webhookName', async (c) => {
       body: JSON.stringify(data)
     })
     return c.json({
-      status: 'ok',
+      status: response.status,
     })
   } catch (error) {
     return c.json({
