@@ -17,6 +17,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@types/node": "^22.15.29",
     "vercel": "^32.4.1"
   }
 }

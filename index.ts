@@ -3,8 +3,7 @@ import { handle } from 'hono/vercel';
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from '@vercel/speed-insights';
  
-inject({
-});
+inject();
 injectSpeedInsights();
 
 const app = new Hono()
