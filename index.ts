@@ -38,6 +38,7 @@ api.post('/webhooks/:webhookName', async (c) => {
     })
     return c.json({
       status: response.status,
+      data: data
     })
   } catch (error) {
     return c.json({
