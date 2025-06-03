@@ -52,6 +52,8 @@ def add_ip_to_asn(asn, ip):
         asn_ip_map[asn] = []
     if ip not in asn_ip_map[asn]:
         asn_ip_map[asn].append(ip)
+        return True
+    return False
 
 def check_ip(ip):
     try:
@@ -70,8 +72,8 @@ def check_ip(ip):
 
         print(f"[*] {ip} => {malicious_count} engines flagged it as malicious. ASN: {asn}")
         if malicious_count >= THRESHOLD and asn:
-            add_ip_to_asn(asn, ip)
-            save_json()
+            if add_ip_to_asn(asn, ip):
+                save_json()
 
     except Exception as e:
         print(f"[!] Failed to check {ip}: {e}")
