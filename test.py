@@ -83,7 +83,6 @@ def tail_log():
     try:
         with subprocess.Popen(["tail", "-F", LOG_FILE], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True) as proc:
             for line in proc.stdout:
-                print(line)
                 match = IP_REGEX.search(line)
                 if match:
                     ip = match.group(1)
