@@ -1,0 +1,6 @@
+<script>
+    const sse = new EventSource("http://192.168.8.110:9090/events");
+    sse.onmessage = (message) => {
+        window.update(JSON.parse(message.data));
+    };
+</script>

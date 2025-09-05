@@ -1,11 +1,15 @@
 import asyncio
+import json
 import threading
+import flask_cors.core
 import websockets
 import flask
 import queue
+import flask_cors
 
 # Flask app
 app = flask.Flask(__name__)
+flask_cors.CORS(app)
 
 # Queue for storing messages from WebSocket to be sent to SSE clients
 message_queue = queue.Queue()
@@ -14,9 +18,17 @@ clients_lock = threading.Lock()
 
 # WebSocket client (runs in background)
 async def websocket_client():
-    uri = "wss://example.com/ws"  # Replace with your WebSocket URL
+    uri = "wss://api.lanyard.rest/socket"  # Replace with your WebSocket URL
     async with websockets.connect(uri) as ws:
         print("Connected to WebSocket server")
+        await ws.send(json.dumps(
+            {
+                "op": 2,
+                "d": {
+                    "subscribe_to_ids": ["1113947120387510382"]
+                }
+            }
+        ))
         async for message in ws:
             message_queue.put(message)
 
