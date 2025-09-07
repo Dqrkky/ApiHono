@@ -16,6 +16,12 @@ api.get('/', (c) => {
   return c.json({ message: 'Hello Hono!' })
 })
 
+api.get('/wakatime', (c) => {
+  return c.json({
+    "type": "event"
+  })
+})
+
 export const config = {
   runtime: 'edge'
 }
