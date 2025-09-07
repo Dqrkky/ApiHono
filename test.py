@@ -57,19 +57,20 @@ def add_ip_to_asn(asn, ip):
 
 def check_ip(ip):
     try:
-        response = requests.get(
-            f"https://www.virustotal.com/api/v3/ip_addresses/{ip}",
-            headers={"x-apikey": VT_API_KEY}
-        )
+        response = requests.request(**{
+            "method": "get",
+            "url": f"https://www.virustotal.com/api/v3/ip_addresses/{ip}",
+            "headers": {
+                "x-apikey": VT_API_KEY
+            }
+        })
         if response.status_code != 200:
             print(f"[!] Error from VirusTotal for {ip}: {response.status_code}")
             return
-
         data = response.json()
         attributes = data.get("data", {}).get("attributes", {})
         malicious_count = attributes.get("last_analysis_stats", {}).get("malicious", 0)
         asn = str(attributes.get("asn", ""))
-
         print(f"[*] {ip} => {malicious_count} engines flagged it as malicious. ASN: {asn}")
         if malicious_count >= THRESHOLD and asn:
             if add_ip_to_asn(asn, ip):
