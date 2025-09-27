@@ -87,7 +87,7 @@ def tail_log():
                 match = IP_REGEX.search(line)
                 if match:
                     ip = match.group(1)
-                    if ip.startswith("127.") or ip in CHECKED_IPS:
+                    if ip == "localhost" or ip.startswith("127.") or ip in CHECKED_IPS:
                         continue
                     CHECKED_IPS.add(ip)
                     check_ip(ip)
