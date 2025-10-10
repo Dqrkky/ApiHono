@@ -75,7 +75,6 @@ def check_ip(ip):
         if malicious_count >= THRESHOLD and asn:
             if add_ip_to_asn(asn, ip):
                 save_json()
-
     except Exception as e:
         print(f"[!] Failed to check {ip}: {e}")
 
