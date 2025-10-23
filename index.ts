@@ -1,9 +1,7 @@
-import { Hono } from 'hono'
-import { handle } from 'hono/vercel'
-import { inject } from "@vercel/analytics"
+import { Hono } from 'hono';
+import { handle } from 'hono/vercel';
+import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from '@vercel/speed-insights';
-
-injectSpeedInsights();
 
 const app = new Hono()
 const api = app.basePath('/api')
